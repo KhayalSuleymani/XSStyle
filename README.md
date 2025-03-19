@@ -17,14 +17,15 @@ Clean **AppDelegate** .
     override var connector: Connector {
         Connector(connections: [
             FirebaseConnector(), // Will connect Firebase SDK
-            FacebookConnector(), // will connect Facebook SDK
             GoogleConnector(),   // Will Connect Google SDK
+            FacebookConnector(), // will connect Facebook SDK
         ])
     }
 }
 
 ```
-**Connector** working with simple Composite [pattern](https://refactoring.guru/design-patterns/composite).
+**Connector** working with simple Composite [pattern](https://refactoring.guru/design-patterns/composite) and connects sub connections which is working for proper SDK.
+
 ```swift
 
 class FirebaseConnector: Connector {
