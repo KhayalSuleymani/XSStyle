@@ -24,6 +24,30 @@ Clean **AppDelegate** .
 }
 
 ```
+**Coordinator** connects WalletApp coordinator [WalletApp](https://apps.apple.com/az/app/wallet-budget-money-manager/id1032467659).
+
+```swift
+
+class Wallet: C<AppRoute> {
+    override func prepareTransition(for route: AppRoute) -> Transition {
+        switch route {
+        case .authorize(let route):
+            let app = Authorize(route)
+            return .set([app])
+        case .tabbar:
+            let app = TabBar(tabs: [
+                Home(),
+                Planning(),
+                Statistics(),
+                More(),
+            ])
+            return .push(app)
+        }
+    }
+}
+
+```
+
 **Connector** working with simple Composite [pattern](https://refactoring.guru/design-patterns/composite) and connects sub connections which is working for proper SDK.
 
 ```swift
