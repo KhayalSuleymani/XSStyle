@@ -71,7 +71,7 @@ Lets deep dive to the **Authorize & Payments** apps coordinator to see what is i
 ```swift
 
 open class Authorize: Coordinator<AuthorizeRoute> {
-    open override func prepareTransition(for route: AuthorizeRoute) -> NavigationTransition {
+    open override func move(to route: AuthorizeRoute) -> Transition {
         switch route {
         case .login:
             let m = LoginViewStyle()
@@ -106,7 +106,7 @@ open class Authorize: Coordinator<AuthorizeRoute> {
 }
 
 open class Payments: Coordinator<PaymentsRoute> {
-    open override func prepareTransition(for route: PaymentsRoute) -> NavigationTransition {
+    open override func move(to route: PaymentsRoute) -> Transition {
         switch route {
         case .payments(let d):
             let m = PaymentsViewStyle(d)
