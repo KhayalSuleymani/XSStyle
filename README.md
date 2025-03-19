@@ -10,11 +10,11 @@ Clean **AppDelegate** .
 
 @main class App: Responder {
     
-    override var coordinator: Coordinator {
+    override var coordinator: Coordinatable {
         Wallet()
     }
 
-    override var connector: Connector {
+    override var connector: Connectable {
         Connector(connections: [
             FirebaseConnector(), // Will connect Firebase SDK
             GoogleConnector(),   // Will Connect Google SDK
