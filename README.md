@@ -24,12 +24,12 @@ Clean **AppDelegate** .
 }
 
 ```
-**Coordinator** connects WalletApp coordinator [WalletApp](https://apps.apple.com/az/app/wallet-budget-money-manager/id1032467659).
+**Coordinator** connects Wallet App coordinator [WalletApp](https://apps.apple.com/az/app/wallet-budget-money-manager/id1032467659).
 
 ```swift
 
 class Wallet: Coordinator<AppRoute> {
-    override func prepareTransition(for route: AppRoute) -> Transition {
+    override func move(to route: AppRoute) -> Transition {
         switch route {
         case .authorize(let route):
             let app = Authorize(route)
@@ -45,6 +45,77 @@ class Wallet: Coordinator<AppRoute> {
         }
     }
 }
+
+```
+
+**Wallet App manual Deeplinking**. Will open proper screen under Authorize and Tabbar apps. 
+
+```swift
+
+let app = Wallet()
+
+app.move(to: .authorize(.signIn))
+app.move(to: .authorize(.login))
+app.move(to: .authorize(.signUp))
+app.move(to: .authorize(.biometric))
+
+app.move(to: .tabbar(.dashboard(.home)))
+app.move(to: .tabbar(.plannings(.plannings)))
+app.move(to: .tabbar(.statistics(.statistics)))
+app.move(to: .tabbar(.more(.more)))
+
+```
+
+Lets deep dive to the **Authorize** app coordinator working with clean MVVM-C pattern.
+
+```swift
+
+open class Authorize: Coordinator<AuthorizeRoute> {
+    open override func prepareTransition(for route: AuthorizeRoute) -> NavigationTransition {
+        switch route {
+        case .login:
+            let m = LoginViewStyle()
+            let v = LoginView()
+            let _ = LoginViewModel(m)
+                .subscribe(v: v)
+                .move(by: self)
+            return .set([v])
+        case .signUp:
+            let m = SignUpViewStyle()
+            let v = SignUpView()
+            let _ = SignUpViewModel(m)
+                .subscribe(v: v)
+                .move(by: self)
+            return .push(v)
+        case .signIn:
+            let m = SignInViewStyle()
+            let v = SignInView()
+            let _ = SignInViewModel(m)
+                .subscribe(v: v)
+                .move(by: self)
+            return .push(v)
+        case .biometric:
+            let m = BiometricViewStyle()
+            let v = BiometricView()
+            let _ = BiometricViewModel(m)
+                .subscribe(v: v)
+                .move(by: self)
+            return .push(v)
+        }
+    }
+}
+
+```
+
+**Authorize App manual Deeplinking**. Will open proper screen under Authorize app.
+
+```swift
+
+let app = Authorize()
+app.move(to: .signIn)
+app.move(to: .login)
+app.move(to: .signUp)
+app.move(to: .biometric)
 
 ```
 
