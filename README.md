@@ -24,7 +24,7 @@ Clean **AppDelegate** .
 }
 
 ```
-**Coordinator** connects Wallet App coordinator [WalletApp](https://apps.apple.com/az/app/wallet-budget-money-manager/id1032467659).
+Clean  **Coordinator** connects Wallet App coordinator [WalletApp](https://apps.apple.com/az/app/wallet-budget-money-manager/id1032467659).
 
 ```swift
 
