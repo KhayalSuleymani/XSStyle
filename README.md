@@ -28,7 +28,7 @@ Clean **AppDelegate** .
 
 ```swift
 
-class Wallet: C<AppRoute> {
+class Wallet: Coordinator<AppRoute> {
     override func prepareTransition(for route: AppRoute) -> Transition {
         switch route {
         case .authorize(let route):
