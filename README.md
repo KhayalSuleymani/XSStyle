@@ -66,7 +66,7 @@ app.move(to: .tabbar(.more(.more)))
 
 ```
 
-Lets deep dive to the **Authorize** app coordinator working with clean MVVM-C pattern.
+Lets deep dive to the **Authorize & Payments** apps coordinator to see what is inside, all micro apps working with clean MVVM-C pattern.
 
 ```swift
 
@@ -101,6 +101,48 @@ open class Authorize: Coordinator<AuthorizeRoute> {
                 .subscribe(v: v)
                 .move(by: self)
             return .push(v)
+        }
+    }
+}
+
+open class Payments: Coordinator<PaymentsRoute> {
+    open override func prepareTransition(for route: PaymentsRoute) -> NavigationTransition {
+        switch route {
+        case .payments(let d):
+            let m = PaymentsViewStyle(d)
+            let v = PaymentsView()
+            let _ = PaymentsViewModel(m)
+                .subscribe(v: v)
+                .move(by: self)
+            return .push(v)
+        case .payment(let d):
+            let m = PaymentViewStyle(d)
+            let v = PaymentView()
+            let _ = PaymentViewModel(m)
+                .subscribe(v: v)
+                .move(by: self)
+            return .push(v)
+        case .merchant(let d):
+            let m = MerchantViewStyle(d)
+            let v = MerchantView()
+            let _ = MerchantViewModel(m)
+                .subscribe(v: v)
+                .move(by: self)
+            return .push(v)
+        case .approve(let d):
+            let m = ApproveViewStyle(d)
+            let v = ApproveView()
+            let _ = ApproveViewModel(m)
+                .subscribe(v: v)
+                .move(by: self)
+            return .push(v)
+        case .success(let d):
+            let m = SuccessViewStyle(d)
+            let v = SuccessView()
+            let _ = SuccessViewModel(m)
+                .subscribe(v: v)
+                .move(by: self)
+            return .present(v)
         }
     }
 }
