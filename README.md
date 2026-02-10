@@ -28,8 +28,8 @@ Clean **AppDelegate** .
     }
 }
 
-
 ```
+
 Clean  **Coordinator** connects Wallet App coordinator [WalletApp](https://apps.apple.com/az/app/wallet-budget-money-manager/id1032467659).
 
 ```swift
@@ -71,6 +71,21 @@ public class Wallet: Coordinator<AppRoute> {                            // -----
 ```
 
 **Wallet App manual Deeplinking**. Will open proper screen under Authorize and Tabbar apps. 
+
+```swift
+
+let app = Wallet()
+
+app.move(to: .authorize(.view1(data)))
+app.move(to: .authorize(.view2(data)))
+app.move(to: .authorize(.view3(data)))
+
+app.move(to: .dashboard(.tab1(data)))
+app.move(to: .dashboard(.tab2(data)))
+app.move(to: .dashboard(.tab3(data)))
+app.move(to: .dashboard(.tab4(data)))
+
+```
 
 Lets deep dive to the **Authorize & Payments** apps coordinator to see what is inside, all micro apps working with clean MVVM-C pattern.
 
