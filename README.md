@@ -195,7 +195,7 @@ SINGLE **MVVM**
 
 
 // MARK: **Model** (m)
-class Model2: ViewStyle<Transaction> {
+class Model1: ViewStyle<Transaction> {
         
     override var sectionsStyle: [SectionStyle] {
         
@@ -208,9 +208,13 @@ class Model2: ViewStyle<Transaction> {
             s2: .style(.s2("Hello")),
             s3: .style(.s3(.s1("https://"), event: event(_:))))
             .didSelect { _ in
-                
+                self.move(by: .view(data))
+            }.willMove { _ in
+                self.move(by: .view(data))
+            }.didMove { _ in
+                self.move(by: .view(data))
             }.didSelect { _ in
-                
+                // deselect action here..
             }.isHidden {
                 data.amount.isEmpty
             }.isShimmering {
@@ -231,10 +235,10 @@ class Model2: ViewStyle<Transaction> {
 }
 
 // MARK: **View** (v)
-typealias View2 = View<Model2>
+typealias View1 = View<Model1>
 
 // MARK: **View Model** (vm)
-class ViewModel2: ViewModel<Model2> {
+class ViewModel1: ViewModel<Model1> {
     @discardableResult
     override func move(by c: Coordinator<Route>) -> Self {
         NetworkService.shared
