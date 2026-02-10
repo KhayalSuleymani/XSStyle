@@ -21,8 +21,8 @@ Clean **AppDelegate** .
     override var connector: Connector { // ----------
         .init(connections: [            //           |
             SDK_1(),                    // firebase
-            SDK_2(),                    // evam      A (adapter)
-            SDK_3(),                    // adjust
+            SDK_2(),                    // google    A (adapter)
+            SDK_3(),                    // facebook
             SDK_4(),                    // tracker   |
         ])                              // ----------
     }
