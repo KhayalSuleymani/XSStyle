@@ -38,8 +38,8 @@ Clean  **Coordinator** connects Wallet App coordinator [WalletApp](https://apps.
 
 public class Wallet: Coordinator<AppRoute> {                            // ---------------
     @discardableResult                                                  //                |
-    override public func move(by route: AppRoute) -> Self {             //                |         let app = Wallet()
-        switch route {                                                  //                |
+    override public func move(by route: AppRoute) -> Self {             //                |         
+        switch route {                                         let app = Wallet()         //                |
         case .authorize(let r):                                         //                |
             let c = Authorize(r)                                        // C --------     |
             show(v: c)                                                  //            |   |
