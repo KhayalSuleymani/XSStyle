@@ -225,7 +225,15 @@ class Model1: ViewStyle<Transaction> {
         let s1_c2 = ImageLabelLabelComponentStyle2(
             s1: .style(.s1("https://via.placeholder.com/150")),
             s2: .style(.s1("Hello...")),
-            s3: .style(.s2("Hello...")))
+            s3: .style(.s2("Hello..."))).didSelect { _ in
+                self.move(by: .view(data))
+            }.didSelect { _ in
+                // deselect action here..
+            }.isHidden {
+                data.amount.isEmpty
+            }.isShimmering {
+                data.isEmpty
+            }
         
         s1.add(s1_c1)
         s1.add(s1_c2)
