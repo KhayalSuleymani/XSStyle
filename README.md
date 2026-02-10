@@ -36,6 +36,17 @@ Clean  **Coordinator** connects Wallet App coordinator [WalletApp](https://apps.
 
 // MARK: Test Coordinator
 
+let app = Wallet()
+
+app.move(to: .authorize(.view1(data)))
+app.move(to: .authorize(.view2(data)))
+app.move(to: .authorize(.view3(data)))
+
+app.move(to: .dashboard(.tab1(data)))
+app.move(to: .dashboard(.tab2(data)))
+app.move(to: .dashboard(.tab3(data)))
+app.move(to: .dashboard(.tab4(data)))
+
 public class Wallet: Coordinator<AppRoute> {                            // ---------------
     @discardableResult                                                  //                |
     override public func move(by route: AppRoute) -> Self {             //                |
@@ -60,22 +71,6 @@ public class Wallet: Coordinator<AppRoute> {                            // -----
 ```
 
 **Wallet App manual Deeplinking**. Will open proper screen under Authorize and Tabbar apps. 
-
-```swift
-
-let app = Wallet()
-
-app.move(to: .authorize(.signIn))
-app.move(to: .authorize(.login))
-app.move(to: .authorize(.signUp))
-app.move(to: .authorize(.biometric))
-
-app.move(to: .dashboard(.home(data)))
-app.move(to: .dashboard(.plannings(data)))
-app.move(to: .dashboard(.statistics(data)))
-app.move(to: .dashboard(.more(data)))
-
-```
 
 Lets deep dive to the **Authorize & Payments** apps coordinator to see what is inside, all micro apps working with clean MVVM-C pattern.
 
@@ -150,10 +145,10 @@ public class Payments: Coordinator<PaymentsRoute> {                     // -----
 
 ```swift
 
-let app = Authorize()            let app = Payments()
-app.move(to: view1(data))        app.move(to: view1(data))
-app.move(to: view2(data))        app.move(to: view2(data))
-app.move(to: view3(data))        app.move(to: view3(data)) 
+let app = Authorize()             let app = Payments()
+app.move(to: .view1(data))        app.move(to: .view1(data))
+app.move(to: .view2(data))        app.move(to: .view2(data))
+app.move(to: .view3(data))        app.move(to: .view3(data)) 
 
 ```
 
