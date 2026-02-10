@@ -185,6 +185,67 @@ app.move(to: .view1(data))        app.move(to: .view1(data))
 app.move(to: .view2(data))        app.move(to: .view2(data))
 app.move(to: .view3(data))        app.move(to: .view3(data)) 
 
+
+```
+
+
+SINGLE **MVVM** 
+
+```swift
+
+
+// MARK: Model
+class Model2: ViewStyle<Transaction> {
+        
+    override var sectionsStyle: [SectionStyle] {
+        
+        // fill section manual indirect...
+        let s1 = SectionStyle()
+        
+        // component1
+        let s1_c1 = ImageLabelButtonComponentStyle(
+            s1: .style(.s1(data?.amount)),
+            s2: .style(.s2("Hello")),
+            s3: .style(.s3(.s1("https://"), event: event(_:))))
+            .didSelect { _ in
+                
+            }.didSelect { _ in
+                
+            }.isHidden {
+                data.amount.isEmpty
+            }.isShimmering {
+                data.isEmpty
+            }
+        
+        // component2
+        let s1_c2 = ImageLabelLabelComponentStyle2(
+            s1: .style(.s1("https://via.placeholder.com/150")),
+            s2: .style(.s1("Hello...")),
+            s3: .style(.s2("Hello...")))
+        
+        s1.add(s1_c1)
+        s1.add(s1_c2)
+        
+        return [ s1 ]
+    }
+}
+
+// MARK: View
+typealias View2 = View<Model2>
+
+// MARK: View Model
+class ViewModel2: ViewModel<Model2> {
+    @discardableResult
+    override func move(by c: Coordinator<Route>) -> Self {
+        NetworkService.shared
+            .request2(model.data?.id, weakify(self) {
+                $0.configure(.init($1))
+        })
+        return self
+    }
+}
+
+
 ```
 
 
