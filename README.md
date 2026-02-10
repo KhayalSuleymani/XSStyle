@@ -70,10 +70,10 @@ app.move(to: .authorize(.login))
 app.move(to: .authorize(.signUp))
 app.move(to: .authorize(.biometric))
 
-app.move(to: .tabbar(.dashboard(.home)))
-app.move(to: .tabbar(.plannings(.plannings)))
-app.move(to: .tabbar(.statistics(.statistics)))
-app.move(to: .tabbar(.more(.more)))
+app.move(to: .dashboard(.home(data)))
+app.move(to: .dashboard(.plannings(data)))
+app.move(to: .dashboard(.statistics(data)))
+app.move(to: .dashboard(.more(data)))
 
 ```
 
@@ -81,82 +81,68 @@ Lets deep dive to the **Authorize & Payments** apps coordinator to see what is i
 
 ```swift
 
-open class Authorize: Coordinator<AuthorizeRoute> {
-    open override func move(to route: AuthorizeRoute) -> Transition {
-        switch route {
-        case .login:
-            let m = LoginViewStyle()
-            let v = LoginView()
-            let _ = LoginViewModel(m)
-                .subscribe(v: v)
-                .move(by: self)
-            return .set([v])
-        case .signUp:
-            let m = SignUpViewStyle()
-            let v = SignUpView()
-            let _ = SignUpViewModel(m)
-                .subscribe(v: v)
-                .move(by: self)
-            return .push(v)
-        case .signIn:
-            let m = SignInViewStyle()
-            let v = SignInView()
-            let _ = SignInViewModel(m)
-                .subscribe(v: v)
-                .move(by: self)
-            return .push(v)
-        case .biometric:
-            let m = BiometricViewStyle()
-            let v = BiometricView()
-            let _ = BiometricViewModel(m)
-                .subscribe(v: v)
-                .move(by: self)
-            return .push(v)
-        }
-    }
-}
+// MARK: Transactions (Model View ViewModel Coordinator) - MVVM-C
 
-open class Payments: Coordinator<PaymentsRoute> {
-    open override func move(to route: PaymentsRoute) -> Transition {
-        switch route {
-        case .payments(let d):
-            let m = PaymentsViewStyle(d)
-            let v = PaymentsView()
-            let _ = PaymentsViewModel(m)
-                .subscribe(v: v)
-                .move(by: self)
-            return .push(v)
-        case .payment(let d):
-            let m = PaymentViewStyle(d)
-            let v = PaymentView()
-            let _ = PaymentViewModel(m)
-                .subscribe(v: v)
-                .move(by: self)
-            return .push(v)
-        case .merchant(let d):
-            let m = MerchantViewStyle(d)
-            let v = MerchantView()
-            let _ = MerchantViewModel(m)
-                .subscribe(v: v)
-                .move(by: self)
-            return .push(v)
-        case .approve(let d):
-            let m = ApproveViewStyle(d)
-            let v = ApproveView()
-            let _ = ApproveViewModel(m)
-                .subscribe(v: v)
-                .move(by: self)
-            return .push(v)
-        case .success(let d):
-            let m = SuccessViewStyle(d)
-            let v = SuccessView()
-            let _ = SuccessViewModel(m)
-                .subscribe(v: v)
-                .move(by: self)
-            return .present(v)
-        }
-    }
-}
+public class Authorize: Coordinator<AuthorizeRoute> {                   // ---------------
+    @discardableResult                                                  //                |
+    override public func move(by route: AuthorizeRoute) -> Self {       //                |
+        switch route {                                                  //                |
+        case .view1(let d):                                             //                |
+            let m = Model1(d)                                           // m              |
+            let v = View1()                                             // v  --------    |
+            let _ = ViewModel1(m)                                       // vm         |   |
+                .subscribe(v)                                           //            |   |
+                .move(by: self)                                         //            |   |
+            push(v: v)                                                  //            |   |
+        case .view2(let d):                                             //            |   |
+            let m = Model2(d)                                           // m          |
+            let v = View2()                                             // v  --------|-- C
+            let _ = ViewModel2(m)                                       // vm         |
+                .subscribe(v)                                           //            |   |
+                .move(by: self)                                         //            |   |
+            push(v: v)                                                  //            |   |
+        case .view3(let d):                                             //            |   |
+            let m = Model3(d)                                           // m          |   |
+            let v = View3()                                             // v  --------    |
+            let _ = ViewModel3(m)                                       // vm             |
+                .subscribe(v)                                           //                |
+                .move(by: self)                                         //                |
+            present(v: v)                                               //                |
+        }                                                               //                |
+        return self                                                     //                |
+    }                                                                   //                |
+}                                                                       // ---------------
+
+
+public class Payments: Coordinator<PaymentsRoute> {                     // ---------------
+    @discardableResult                                                  //                |
+    override public func move(by route: PaymentsRoute) -> Self {        //                |
+        switch route {                                                  //                |
+        case .view1(let d):                                             //                |
+            let m = Model1(d)                                           // m              |
+            let v = View1()                                             // v  --------    |
+            let _ = ViewModel1(m)                                       // vm         |   |
+                .subscribe(v)                                           //            |   |
+                .move(by: self)                                         //            |   |
+            push(v: v)                                                  //            |   |
+        case .view2(let d):                                             //            |   |
+            let m = Model2(d)                                           // m          |
+            let v = View2()                                             // v  --------|-- C
+            let _ = ViewModel2(m)                                       // vm         |
+                .subscribe(v)                                           //            |   |
+                .move(by: self)                                         //            |   |
+            push(v: v)                                                  //            |   |
+        case .view3(let d):                                             //            |   |
+            let m = Model3(d)                                           // m          |   |
+            let v = View3()                                             // v  --------    |
+            let _ = ViewModel3(m)                                       // vm             |
+                .subscribe(v)                                           //                |
+                .move(by: self)                                         //                |
+            present(v: v)                                               //                |
+        }                                                               //                |
+        return self                                                     //                |
+    }                                                                   //                |
+}                                                                       // ---------------
 
 ```
 
