@@ -179,11 +179,6 @@ public class Payments: Coordinator<PaymentsRoute> {                     // -----
     }                                                                   //                |
 }                                                                       // ---------------
 
-```
-
-**Authorize App manual Deeplinking**. Will open proper screen under Authorize app.
-
-```swift
 
 let app = Authorize()             let app = Payments()
 app.move(to: .view1(data))        app.move(to: .view1(data))
