@@ -58,14 +58,14 @@ public class Wallet: Coordinator<AppRoute> {                            // -----
 
 let app = Wallet()
 
-app.move(to: .authorize(.view1(data)))
-app.move(to: .authorize(.view2(data)))
-app.move(to: .authorize(.view3(data)))
+app.move(to: .authorize(.view1(data)))         // will open authorize module first view.
+app.move(to: .authorize(.view2(data)))         // will open authorize module second view.
+app.move(to: .authorize(.view3(data)))         // will open authorize module third view.
 
-app.move(to: .dashboard(.tab1(data)))
-app.move(to: .dashboard(.tab2(data)))
-app.move(to: .dashboard(.tab3(data)))
-app.move(to: .dashboard(.tab4(data)))
+app.move(to: .dashboard(.tab1(.mod1(data))))   // will open the first module under first tab.
+app.move(to: .dashboard(.tab2(.mod1(data))))   // will open the first module under second tab.
+app.move(to: .dashboard(.tab3(.mod2(data))))   // will open the second module under third tab.
+app.move(to: .dashboard(.tab4(.mod3(data))))   // will open the third module under fourth tab.
 
 ```
 
