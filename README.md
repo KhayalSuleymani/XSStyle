@@ -151,12 +151,9 @@ public class Payments: Coordinator<PaymentsRoute> {                     // -----
 ```swift
 
 let app = Authorize()            let app = Payments()
-app.move(to: .signIn)            app.move(to: .payments(data))
-app.move(to: .login)             app.move(to: .payment(data))
-app.move(to: .signUp)            app.move(to: .merchant(data)) 
-app.move(to: .biometric)         app.move(to: .approve(data))
-                                 app.move(to: .success(data))
-
+app.move(to: view1(data))        app.move(to: view1(data))
+app.move(to: view2(data))        app.move(to: view2(data))
+app.move(to: view3(data))        app.move(to: view3(data)) 
 
 ```
 
