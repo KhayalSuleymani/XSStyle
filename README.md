@@ -8,20 +8,26 @@ Clean **AppDelegate** .
 
 ```swift
 
-@main class App: Responder {
-    
-    override var coordinator: Coordinatable {
-        Wallet()
-    }
+// MARK: App Delegate
 
-    override var connector: Connectable {
-        Connector(connections: [
-            FirebaseConnector(), // Will connect Firebase SDK
-            GoogleConnector(),   // Will Connect Google SDK
-            FacebookConnector(), // will connect Facebook SDK
-        ])
+@main class Main: App {
+    
+    /// app coordinator connection
+    override var controller: Test {
+        Test()                          // -------- C
+    }
+    
+    /// app third parties connection
+    override var connector: Connector { // ----------
+        .init(connections: [            //           |
+            SDK_1(),                    // firebase
+            SDK_2(),                    // evam      A (adapter)
+            SDK_3(),                    // adjust
+            SDK_4(),                    // tracker   |
+        ])                              // ----------
     }
 }
+
 
 ```
 Clean  **Coordinator** connects Wallet App coordinator [WalletApp](https://apps.apple.com/az/app/wallet-budget-money-manager/id1032467659).
