@@ -34,7 +34,7 @@ Clean  **Coordinator** connects Wallet App coordinator [WalletApp](https://apps.
 
 ```swift
 
-// MARK: Test Coordinator
+// MARK: Wallet Coordinator
 
 public class Wallet: Coordinator<AppRoute> {                            // ---------------
     @discardableResult                                                  //                |
@@ -55,8 +55,6 @@ public class Wallet: Coordinator<AppRoute> {                            // -----
         return self                                                     //                |
     }                                                                   //                |
 }                                                                       // ---------------
-
-**Wallet App manual Deeplinking**. Will open proper screen under Authorize and Tabbar apps. 
 
 let app = Wallet()
 
