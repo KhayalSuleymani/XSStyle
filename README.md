@@ -35,7 +35,7 @@ Clean **AppDelegate** .
 
 ```swift
 
-class FirebaseConnector: Connector {                // ---------------
+class SDK_1: Connector {                            // ---------------
     convenience init() {                            //                |
         self.init(connections: [                    //                |
             FirebaseCrashlyticsConnector(),         // mod1 ----               
@@ -45,7 +45,7 @@ class FirebaseConnector: Connector {                // ---------------
     }                                               //                |
 }                                                   // ---------------
 
-class GoogleConnector: Connector {                  // ---------------
+class SDK_2: Connector {                            // ---------------
     convenience init() {                            //                |
         self.init(connections: [                    //                |
             GoogleCrashlyticsConnector(),           // mod1 ----               
@@ -56,7 +56,7 @@ class GoogleConnector: Connector {                  // ---------------
 }                                                   // ---------------
 
 
-class FacebookConnector: Connector {                // ---------------
+class SDK_3: Connector {                            // ---------------
     convenience init() {                            //                |
         self.init(connections: [                    //                |
             FacebookCrashlyticsConnector(),         // mod1 ----               
