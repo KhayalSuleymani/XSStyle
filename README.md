@@ -30,6 +30,46 @@ Clean **AppDelegate** .
 
 ```
 
+
+**Connector** working with simple Composite [pattern](https://refactoring.guru/design-patterns/composite) and connects sub connections which is working for proper SDK.
+
+```swift
+
+class FirebaseConnector: Connector {                // ---------------
+    convenience init() {                            //                |
+        self.init(connections: [                    //                |
+            FirebaseCrashlyticsConnector(),         // mod1 ----               
+            FirebaseAnalyticsConnector(),           // mod2 ---- |- SDK
+            FirebaseDatabaseConnector(),            // mod3 ----               
+        ])                                          //                |
+    }                                               //                |
+}                                                   // ---------------
+
+class GoogleConnector: Connector {                  // ---------------
+    convenience init() {                            //                |
+        self.init(connections: [                    //                |
+            GoogleCrashlyticsConnector(),           // mod1 ----               
+            GoogleAnalyticsConnector(),             // mod2 ---- |- SDK
+            GoogleDatabaseConnector(),              // mod3 ----               
+        ])                                          //                |
+    }                                               //                |
+}                                                   // ---------------
+
+
+class FacebookConnector: Connector {                // ---------------
+    convenience init() {                            //                |
+        self.init(connections: [                    //                |
+            FacebookCrashlyticsConnector(),         // mod1 ----               
+            FacebookAnalyticsConnector(),           // mod2 ---- |- SDK
+            FacebookDatabaseConnector(),            // mod3 ----               
+        ])                                          //                |
+    }                                               //                |
+}                                                   // ---------------
+
+
+```
+
+
 Clean  **Coordinator** connects Wallet App coordinator [WalletApp](https://apps.apple.com/az/app/wallet-budget-money-manager/id1032467659).
 
 ```swift
@@ -151,47 +191,6 @@ app.move(to: .view2(data))        app.move(to: .view2(data))
 app.move(to: .view3(data))        app.move(to: .view3(data)) 
 
 ```
-
-**Connector** working with simple Composite [pattern](https://refactoring.guru/design-patterns/composite) and connects sub connections which is working for proper SDK.
-
-```swift
-
-class FirebaseConnector: Connector {                // ---------------
-    convenience init() {                            //                |
-        self.init(connections: [                    //                |
-            FirebaseCrashlyticsConnector(),         // mod1 ----               
-            FirebaseAnalyticsConnector(),           // mod2 ---- |- SDK
-            FirebaseDatabaseConnector(),            // mod3 ----               
-        ])                                          //                |
-    }                                               //                |
-}                                                   // ---------------
-
-class GoogleConnector: Connector {                  // ---------------
-    convenience init() {                            //                |
-        self.init(connections: [                    //                |
-            GoogleCrashlyticsConnector(),           // mod1 ----               
-            GoogleAnalyticsConnector(),             // mod2 ---- |- SDK
-            GoogleDatabaseConnector(),              // mod3 ----               
-        ])                                          //                |
-    }                                               //                |
-}                                                   // ---------------
-
-
-class FacebookConnector: Connector {                // ---------------
-    convenience init() {                            //                |
-        self.init(connections: [                    //                |
-            FacebookCrashlyticsConnector(),         // mod1 ----               
-            FacebookAnalyticsConnector(),           // mod2 ---- |- SDK
-            FacebookDatabaseConnector(),            // mod3 ----               
-        ])                                          //                |
-    }                                               //                |
-}                                                   // ---------------
-
-
-```
-
-
-
 
 
 Style models **Inheritance** hierarchies.
