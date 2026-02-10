@@ -67,6 +67,8 @@ app.move(to: .dashboard(.tab2(.mod1(data))))   // will open the first module und
 app.move(to: .dashboard(.tab3(.mod2(data))))   // will open the second module under third tab.
 app.move(to: .dashboard(.tab4(.mod3(data))))   // will open the third module under fourth tab.
 
+
+
 ```
 
 Lets deep dive to the **Authorize & Payments** apps coordinator to see what is inside, all micro apps working with clean MVVM-C pattern.
