@@ -13,8 +13,8 @@ Clean **AppDelegate** .
 @main class Main: App {
     
     /// app coordinator connection
-    override var controller: Test {
-        Test()                          // -------- C
+    override var controller: Wallet {
+        Wallet()                        // -------- C
     }
     
     /// app third parties connection
@@ -34,23 +34,28 @@ Clean  **Coordinator** connects Wallet App coordinator [WalletApp](https://apps.
 
 ```swift
 
-class Wallet: Coordinator<AppRoute> {
-    override func move(to route: AppRoute) -> Transition {
-        switch route {
-        case .authorize(let route):
-            let app = Authorize(route)
-            return .set([app])
-        case .tabbar:
-            let app = TabBar(tabs: [
-                Home(),
-                Planning(),
-                Statistics(),
-                More(),
-            ])
-            return .push(app)
-        }
-    }
-}
+// MARK: Test Coordinator
+
+public class Wallet: Coordinator<AppRoute> {                            // ---------------
+    @discardableResult                                                  //                |
+    override public func move(by route: AppRoute) -> Self {             //                |
+        switch route {                                                  //                |
+        case .authorize(let r):                                         //                |
+            let c = Authorize(r)                                        // C --------     |
+            show(v: c)                                                  //            |   |
+        case .dashboard(_):                                             //            |
+            let c = Tab(tabs: [                                         //            |-- C
+                Tab1(),                                                 //            |
+                Tab2(),                                                 //            |   |
+                Tab3(),                                                 // C --------     |
+                Tab4(),                                                 //                |
+            ])                                                          //                |
+            overFull(v: c)                                              //                |
+        }                                                               //                |
+        return self                                                     //                |
+    }                                                                   //                |
+}                                                                       // ---------------
+
 
 ```
 
