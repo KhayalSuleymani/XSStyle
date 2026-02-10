@@ -80,7 +80,7 @@ Lets deep dive to the **Authorize & Payments** apps coordinator to see what is i
 
 ```swift
 
-// MARK: Transactions (Model View ViewModel Coordinator) - MVVM-C
+// MARK: Authorize (Model View ViewModel Coordinator) - MVVM-C
 
 public class Authorize: Coordinator<AuthorizeRoute> {                   // ---------------
     @discardableResult                                                  //                |
@@ -112,6 +112,7 @@ public class Authorize: Coordinator<AuthorizeRoute> {                   // -----
     }                                                                   //                |
 }                                                                       // ---------------
 
+// MARK: Payments (Model View ViewModel Coordinator) - MVVM-C
 
 public class Payments: Coordinator<PaymentsRoute> {                     // ---------------
     @discardableResult                                                  //                |
