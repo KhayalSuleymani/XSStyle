@@ -194,7 +194,7 @@ SINGLE **MVVM**
 ```swift
 
 
-// MARK: Model
+// MARK: **Model** (m)
 class Model2: ViewStyle<Transaction> {
         
     override var sectionsStyle: [SectionStyle] {
@@ -230,10 +230,10 @@ class Model2: ViewStyle<Transaction> {
     }
 }
 
-// MARK: View
+// MARK: **View** (v)
 typealias View2 = View<Model2>
 
-// MARK: View Model
+// MARK: **View Model** (vm)
 class ViewModel2: ViewModel<Model2> {
     @discardableResult
     override func move(by c: Coordinator<Route>) -> Self {
