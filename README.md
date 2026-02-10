@@ -36,17 +36,6 @@ Clean  **Coordinator** connects Wallet App coordinator [WalletApp](https://apps.
 
 // MARK: Test Coordinator
 
-let app = Wallet()
-
-app.move(to: .authorize(.view1(data)))
-app.move(to: .authorize(.view2(data)))
-app.move(to: .authorize(.view3(data)))
-
-app.move(to: .dashboard(.tab1(data)))
-app.move(to: .dashboard(.tab2(data)))
-app.move(to: .dashboard(.tab3(data)))
-app.move(to: .dashboard(.tab4(data)))
-
 public class Wallet: Coordinator<AppRoute> {                            // ---------------
     @discardableResult                                                  //                |
     override public func move(by route: AppRoute) -> Self {             //                |
