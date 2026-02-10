@@ -160,35 +160,37 @@ app.move(to: .view3(data))        app.move(to: .view3(data))
 
 ```swift
 
-class FirebaseConnector: Connector {
-    convenience init() {
-        self.init(connections: [
-            FirebaseCrashlyticsConnector(),
-            FirebaseAnalyticsConnector(),
-            FirebaseDatabaseConnector(),
-        ])
-    }
-}
+class FirebaseConnector: Connector {                // ---------------
+    convenience init() {                            //                |
+        self.init(connections: [                    //                |
+            FirebaseCrashlyticsConnector(),         // mod1 ----               
+            FirebaseAnalyticsConnector(),           // mod2 ---- |- SDK
+            FirebaseDatabaseConnector(),            // mod3 ----               
+        ])                                          //                |
+    }                                               //                |
+}                                                   // ---------------
 
-class GoogleConnector: Connector {
-    convenience init() {
-        self.init(connections: [
-            GoogleCrashlyticsConnector(),
-            GoogleAnalyticsConnector(),
-            GoogleDatabaseConnector(),
-        ])
-    }
-}
+class GoogleConnector: Connector {                  // ---------------
+    convenience init() {                            //                |
+        self.init(connections: [                    //                |
+            GoogleCrashlyticsConnector(),           // mod1 ----               
+            GoogleAnalyticsConnector(),             // mod2 ---- |- SDK
+            GoogleDatabaseConnector(),              // mod3 ----               
+        ])                                          //                |
+    }                                               //                |
+}                                                   // ---------------
 
-class FacebookConnector: Connector {
-    convenience init() {
-        self.init(connections: [
-            FacebookCrashlyticsConnector(),
-            FacebookAnalyticsConnector(),
-            FacebookDatabaseConnector(),
-        ])
-    }
-}
+
+class FacebookConnector: Connector {                // ---------------
+    convenience init() {                            //                |
+        self.init(connections: [                    //                |
+            FacebookCrashlyticsConnector(),         // mod1 ----               
+            FacebookAnalyticsConnector(),           // mod2 ---- |- SDK
+            FacebookDatabaseConnector(),            // mod3 ----               
+        ])                                          //                |
+    }                                               //                |
+}                                                   // ---------------
+
 
 ```
 
