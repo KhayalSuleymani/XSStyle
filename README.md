@@ -154,7 +154,7 @@ Lets deep dive to the **Authorize & Payments** apps coordinator to see what is i
 
 ```swift
 
-// MARK: Authorize (Model View ViewModel Coordinator) - MVVM-C
+// MARK: Cards (Model View ViewModel Coordinator) - MVVM-C
 
 public class Cards: Coordinator<CardsRoute> {                           // ---------------
     @discardableResult                                                  //                |
@@ -186,7 +186,7 @@ public class Cards: Coordinator<CardsRoute> {                           // -----
     }                                                                   //                |
 }                                                                       // ---------------
 
-// MARK: Payments (Model View ViewModel Coordinator) - MVVM-C
+// MARK: Accounts (Model View ViewModel Coordinator) - MVVM-C
 
 public class Accounts: Coordinator<AccountsRoute> {                     // ---------------
     @discardableResult                                                  //                |
