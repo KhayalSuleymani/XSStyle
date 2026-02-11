@@ -116,13 +116,13 @@ Lets deep dive into the **Products** app coordinator to see what is inside, all 
 ```swift
 
 
-// MARK: Products Coordinator
+// MARK: Products app Coordinator
 
 public class Products: Coordinator<ProductsRoute> {                     // ---------------
     @discardableResult                                                  //                |
     override public func move(by route: ProductsRoute) -> Self {        //                |
         switch route {                                                  //                |
-        case .mod1(let route):                                          //                |
+        case .cards(let route):                                         //                |
             let c = Cards(route)                                        // C ---------    |
             show(v: c)                                                  //            |   |
         case .accounts(let route):                                      //            |   |
