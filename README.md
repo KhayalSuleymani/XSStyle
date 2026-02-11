@@ -111,15 +111,54 @@ app.move(to: .dashboard(.tab4(.mod3(data))))   // will open the third module und
 
 ```
 
+Lets deep dive into the **Products** app coordinator to see what is inside, all micro apps working with clean MVVM-C pattern.
+
+```swift
+
+
+// MARK: Products Coordinator
+
+public class Products: Coordinator<ProductsRoute> {                     // ---------------
+    @discardableResult                                                  //                |
+    override public func move(by route: ProductsRoute) -> Self {        //                |
+        switch route {                                                  //                |
+        case .mod1(let route):                                          //                |
+            let c = Cards(route)                                        // C ---------    |
+            show(v: c)                                                  //            |   |
+        case .accounts(let route):                                      //            |   |
+            let c = Accounts(route)                                     // C ---------|
+            show(v: c)                                                  //            |-- C
+        case .deposits(let route):                                      //            |
+            let c = Deposits(route)                                     // C ---------|   |
+            show(v: c)                                                  //            |   |
+        case .loans(let route):                                         //            |   |
+            let c = Loans(route)                                        // C ---------    |
+            show(v: c)                                                  //                |
+        }                                                               //                |
+        return self                                                     //                |
+    }                                                                   //                |
+}                                                                       // ---------------
+
+let app = Tab1()
+app.move(to: .mod1(.view1(data)))         // will open cards module first view.
+app.move(to: .mod2(.view2(data)))         // will open accounts module second view.
+app.move(to: .mod3(.view3(data)))         // will open deposits module third view.
+app.move(to: .mod4(.view3(data)))         // will open loans module third view.
+
+
+```
+
+
+
 Lets deep dive to the **Authorize & Payments** apps coordinator to see what is inside, all micro apps working with clean MVVM-C pattern.
 
 ```swift
 
 // MARK: Authorize (Model View ViewModel Coordinator) - MVVM-C
 
-public class Authorize: Coordinator<AuthorizeRoute> {                   // ---------------
+public class Cards: Coordinator<CardsRoute> {                           // ---------------
     @discardableResult                                                  //                |
-    override public func move(by route: AuthorizeRoute) -> Self {       //                |
+    override public func move(by route: CardsRoute) -> Self {           //                |
         switch route {                                                  //                |
         case .view1(let d):                                             //                |
             let m = Model1(d)                                           // m              |
@@ -149,9 +188,9 @@ public class Authorize: Coordinator<AuthorizeRoute> {                   // -----
 
 // MARK: Payments (Model View ViewModel Coordinator) - MVVM-C
 
-public class Payments: Coordinator<PaymentsRoute> {                     // ---------------
+public class Accounts: Coordinator<AccountsRoute> {                     // ---------------
     @discardableResult                                                  //                |
-    override public func move(by route: PaymentsRoute) -> Self {        //                |
+    override public func move(by route: AccountsRoute) -> Self {        //                |
         switch route {                                                  //                |
         case .view1(let d):                                             //                |
             let m = Model1(d)                                           // m              |
@@ -180,7 +219,7 @@ public class Payments: Coordinator<PaymentsRoute> {                     // -----
 }                                                                       // ---------------
 
 
-let app = Authorize()             let app = Payments()
+let app = Cards()                 let app = Accounts()
 app.move(to: .view1(data))        app.move(to: .view1(data))
 app.move(to: .view2(data))        app.move(to: .view2(data))
 app.move(to: .view3(data))        app.move(to: .view3(data)) 
