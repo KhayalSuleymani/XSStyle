@@ -296,7 +296,13 @@ class ViewModel1: ViewModel<Model1> {
 
 ```
 
+// 
+// 
+
 ![alt text](https://github.com/KhayalSuleymani/XSStyle/blob/master/Documents/UnitTests/unit_tests_coverage.png)
+
+// 
+// 
 
 Style models **Inheritance** hierarchies.
 
