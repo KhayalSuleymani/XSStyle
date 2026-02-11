@@ -188,7 +188,7 @@ app.move(to: .view3(data))        app.move(to: .view3(data))
 
 ```
 
-SINGLE **MVVM LAYER** 
+**SINGLE MVVM LAYER** 
 
 ```swift
 
@@ -245,14 +245,10 @@ class Model1: ViewStyle<Transaction> {
 
 
 // MARK: **View** (v)
-
 typealias View1 = View<Model1>
 
 
-
-
 // MARK: **View Model** (vm)
-
 class ViewModel1: ViewModel<Model1> {
     @discardableResult
     override func move(by c: Coordinator<Route>) -> Self {
@@ -265,11 +261,9 @@ class ViewModel1: ViewModel<Model1> {
 }
 
 
-
-
 ```
 
 
-
-
 Style models **Inheritance** hierarchies.
+
+
