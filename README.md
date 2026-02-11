@@ -252,8 +252,6 @@ class Model1: ViewStyle<Transaction> {
                 self.move(by: .view(data))
             }.didMove { _ in
                 self.move(by: .view(data))
-            }.didSelect { _ in
-                // deselect action here..
             }.isHidden {
                 data.amount.isEmpty
             }.isShimmering {
@@ -264,11 +262,8 @@ class Model1: ViewStyle<Transaction> {
         let s1_c2 = ImageLabelLabelComponentStyle2(
             s1: .style(.s1("https://via.placeholder.com/150")),
             s2: .style(.s1("Hello...")),
-            s3: .style(.s2("Hello..."))).didSelect { _ in
-                self.move(by: .view(data))
-            }.didSelect { _ in
-                // deselect action here..
-            }.isHidden {
+            s3: .style(.s2("Hello...")))
+            .isHidden {
                 data.amount.isEmpty
             }.isShimmering {
                 data.isEmpty
@@ -280,7 +275,6 @@ class Model1: ViewStyle<Transaction> {
         return [ s1 ]
     }
 }
-
 
 
 // MARK: **View** (v)
