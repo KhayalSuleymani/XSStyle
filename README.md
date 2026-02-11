@@ -286,7 +286,7 @@ class ViewModel1: ViewModel<Model1> {
     @discardableResult
     override func move(by c: Coordinator<Route>) -> Self {
         NetworkService.shared
-            .request2(model.data?.id, weakify(self) {
+            .requestCards(model.data?.id) {
                 $0.configure(.init($1))
         })
         return self
