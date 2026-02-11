@@ -139,11 +139,11 @@ public class Products: Coordinator<ProductsRoute> {                     // -----
     }                                                                   //                |
 }                                                                       // ---------------
 
-let app = Tab1()
-app.move(to: .mod1(.view1(data)))         // will open cards module first view.
-app.move(to: .mod2(.view2(data)))         // will open accounts module second view.
-app.move(to: .mod3(.view3(data)))         // will open deposits module third view.
-app.move(to: .mod4(.view3(data)))         // will open loans module third view.
+let app = Products()
+app.move(to: .cards(.view1(data)))         // will open cards module first view.
+app.move(to: .accounts(.view2(data)))      // will open accounts module second view.
+app.move(to: .deposits(.view3(data)))      // will open deposits module third view.
+app.move(to: .loans(.view3(data)))         // will open loans module third view.
 
 
 ```
