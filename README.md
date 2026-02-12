@@ -227,6 +227,8 @@ app.move(to: .view3(data))        app.move(to: .view3(data))
 
 ```
 
+### MVVM architecture
+
 **SINGLE MVVM LAYER** 
 
 ```swift
@@ -278,7 +280,7 @@ class Model1: ViewStyle<Transaction> {
 
 
 // MARK: **View** (v)
-typealias View1 = View<Model1>
+typealias View1 = View<Model1> // no need viewcontroller anymore
 
 
 // MARK: **View Model** (vm)
