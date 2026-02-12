@@ -408,7 +408,8 @@ open class ImageLabelLabelComponentStyle: ImageLabelComponentStyle {
                 s2: LabelStyle,
                 s3: LabelStyle) {
         self.s3 = s3
-        super.init(s1: s1, s2: s2)
+        super.init(s1: s1,
+                   s2: s2)
     }
 }
 
@@ -437,7 +438,7 @@ class ImageLabelLabelButtonComponent: Component<ImageLabelLabelButtonComponentSt
 
 open class ImageLabelLabelButtonComponentStyle: ImageLabelLabelComponentStyle {
     
-    let s3: LabelStyle
+    let s4: ButtonStyle
     
     public init(s1: ImageStyle,
                 s2: LabelStyle,
