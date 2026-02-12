@@ -306,6 +306,9 @@ class ViewModel1: ViewModel<Model1> {
 
 ### Components architecture
 
+![alt text](https://github.com/KhayalSuleymani/XSStyle/blob/master/Documents/Components/components_hierarchy.png)
+
+
 Style models **Inheritance** hierarchies. let's suppose 
 
 **X**  --> Label component <br />
@@ -319,8 +322,6 @@ examples should be...
 
 **XYZ** --> LabelButtonImageComponent <br />
 **ZXY** --> ImageLabelButtonComponent <br />
-
-![alt text](https://github.com/KhayalSuleymani/XSStyle/blob/master/Documents/Components/components_hierarchy.png)
 
 Lets show, how component inheritance works in real example.
 
