@@ -69,7 +69,7 @@ class SDK_3: Connector {                            // ---------------
 
 ```
 
-
+### Coordinator architecture
 Clean  **Coordinator** connects Wallet App coordinator [WalletApp](https://apps.apple.com/az/app/wallet-budget-money-manager/id1032467659).
 
 ```swift
