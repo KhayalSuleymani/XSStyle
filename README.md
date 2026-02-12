@@ -306,7 +306,7 @@ class ViewModel1: ViewModel<Model1> {
 
 Style models **Inheritance** hierarchies. let's suppose 
 
-**X**  --> Label component
+**X**  --> Label component /n
 **Y**  --> Button component
 **Z**  --> Image component
 
