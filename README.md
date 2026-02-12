@@ -304,8 +304,19 @@ class ViewModel1: ViewModel<Model1> {
 
 
 
-Style models **Inheritance** hierarchies.
+Style models **Inheritance** hierarchies. let's suppose 
 
+**X**  --> Label component
+**Y**  --> Button component
+**Z**  --> Image component
+
+examples should be...
+
+**XY** --> LabelButtonComponent
+**YX** --> ButtonLabelComponent
+
+**XYZ** --> LabelButtonImageComponent
+**ZXY** --> ImageLabelButtonComponent
 
 ![alt text](https://github.com/KhayalSuleymani/XSStyle/blob/master/Documents/Components/components_hierarchy.png)
 
