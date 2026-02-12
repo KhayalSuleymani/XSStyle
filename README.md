@@ -323,6 +323,8 @@ examples should be...
 Lets show, how component inheritance works in real example.
 
 
+// -------------- first inheritance
+
 ```swift
 
 class ImageComponent: Component<ImageComponentStyle> {
@@ -332,7 +334,7 @@ class ImageComponent: Component<ImageComponentStyle> {
     @discardableResult
     override func configure(_ s: ImageComponentStyle) -> Self {
         v1.configure(s.s1)
-        return super.configure(s)                                     // -------------- inheritance first floor 
+        return super.configure(s)                                     
     }
 }
 
@@ -346,7 +348,35 @@ open class ImageComponentStyle: ComponentStyle {
 }
 
 
+```
 
+// -------------- second inheritance
+
+```swift
+
+class ImageLabelComponent: Component<ImageLabelComponentStyle> {
+    
+    weak var v1: ImageView!
+    weak var v2: Label!
+    
+    @discardableResult
+    override func configure(_ s: ImageLabelComponentStyle) -> Self {
+        v1.configure(s.s1)
+        v2.configure(s.s2)
+        return self
+    }
+}
+
+open class ImageLabelComponentStyle: ImageComponentStyle {
+    
+    let s2: LabelStyle
+    
+    public init(s1: ImageStyle,
+                s2: LabelStyle) {
+        self.s2 = s2
+        super.init(s1: s1)
+    }
+}
 
 
 ```
