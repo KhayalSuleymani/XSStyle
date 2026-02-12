@@ -463,3 +463,23 @@ open class ImageLabelLabelButtonComponentStyle3: ImageLabelLabelButtonComponentS
 open class ImageLabelLabelButtonComponentStyle4: ImageLabelLabelButtonComponentStyle { }
 
 ```
+
+// you wil add all your components to the tableview-collection datasource just one time... 
+
+```swift
+
+public class ViewController: UITableViewController {
+
+    lazy var dataSource = DataSource.shared
+
+    override func viewDidload () {
+      super.viewDidload()
+      dataSource.delegate = tableView
+      dataSource.dataSource = tableView
+    }
+}
+
+
+```
+
+
