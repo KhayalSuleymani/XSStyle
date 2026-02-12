@@ -30,7 +30,7 @@ Clean **AppDelegate** .
 
 ```
 
-
+### SDK connection architecture
 **Connector** working with simple Composite [pattern](https://refactoring.guru/design-patterns/composite) and connects sub connections which is working for proper SDK.
 
 ```swift
