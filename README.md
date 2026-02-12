@@ -381,7 +381,6 @@ open class ImageLabelComponentStyle: ImageComponentStyle {
 
 ```
 
-
 // -------------- third inheritance
 
 ```swift
@@ -450,5 +449,16 @@ open class ImageLabelLabelButtonComponentStyle: ImageLabelLabelComponentStyle {
                    s3: s3)
     }
 }
+
+```
+
+// -------------- let's suppose we have ImageLabelLabelButtonComponent but different styles, your style model inheritance shoud be like |
+
+```swift
+
+open class ImageLabelLabelButtonComponentStyle1: ImageLabelLabelButtonComponentStyle { }
+open class ImageLabelLabelButtonComponentStyle2: ImageLabelLabelButtonComponentStyle { }
+open class ImageLabelLabelButtonComponentStyle3: ImageLabelLabelButtonComponentStyle { }
+open class ImageLabelLabelButtonComponentStyle4: ImageLabelLabelButtonComponentStyle { }
 
 ```
