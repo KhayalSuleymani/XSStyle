@@ -381,3 +381,74 @@ open class ImageLabelComponentStyle: ImageComponentStyle {
 
 ```
 
+
+// -------------- third inheritance
+
+```swift
+
+class ImageLabelLabelComponent: Component<ImageLabelLabelComponentStyle> {
+
+    weak var v1: ImageView!
+    weak var v2: Label!
+    weak var v3: Label!
+    
+    @discardableResult
+    override func configure(_ s: ImageLabelLabelComponentStyle) -> Self {
+        v1.configure(s.s1)
+        v2.configure(s.s2)
+        v3.configure(s.s3)
+        return self
+    }
+}
+
+open class ImageLabelLabelComponentStyle: ImageLabelComponentStyle {
+    
+    let s3: LabelStyle
+    
+    public init(s1: ImageStyle,
+                s2: LabelStyle,
+                s3: LabelStyle) {
+        self.s3 = s3
+        super.init(s1: s1, s2: s2)
+    }
+}
+
+```
+
+// -------------- fourth inheritance
+
+```swift
+
+class ImageLabelLabelButtonComponent: Component<ImageLabelLabelButtonComponentStyle> {
+
+    weak var v1: ImageView!
+    weak var v2: Label!
+    weak var v3: Label!
+    weak var v4: Button!    
+
+   @discardableResult
+    override func configure(_ s: ImageLabelLabelButtonComponentStyle) -> Self {
+        v1.configure(s.s1)
+        v2.configure(s.s2)
+        v3.configure(s.s3)
+        v4.configure(s.s4)
+        return self
+    }
+}
+
+open class ImageLabelLabelButtonComponentStyle: ImageLabelLabelComponentStyle {
+    
+    let s3: LabelStyle
+    
+    public init(s1: ImageStyle,
+                s2: LabelStyle,
+                s3: LabelStyle,
+                s4: ButtonStyle) {
+        self.s4 = s4
+        super.init(s1: s1,
+                   s2: s2,
+                   s3: s3)
+    }
+}
+
+```
