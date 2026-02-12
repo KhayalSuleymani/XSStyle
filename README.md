@@ -468,7 +468,7 @@ open class ImageLabelLabelButtonComponentStyle4: ImageLabelLabelButtonComponentS
 
 ```swift
 
-public class ViewController: UITableViewController {
+public class ViewController<Style:ViewStyle>: UITableViewController, Configurable {
 
     lazy var dataSource = DataSource.shared
 
@@ -477,8 +477,47 @@ public class ViewController: UITableViewController {
       dataSource.delegate = tableView
       dataSource.dataSource = tableView
     }
+
+    @discardableResult
+    public func configure (state: ViewState<Style>) -> Self {
+       switch state {
+         case .loaded (let style): 
+          dataSource
+               .set(tableView)
+               .set(style.sectionsStyle)
+          indicator.loaded()
+         case .loading (let style):
+            indicator.loading()
+            configure(state: .loaded(style))
+         case _:
+           break
+       }
+       return self
+    } 
 }
 
+extension DataSource {
+   static var shared: DataSource {
+     .init(components: [
+         ComponentDescriptor<ImageComponentStyle1, ImageComponent1>(),
+         ComponentDescriptor<ImageComponentStyle2, ImageComponent2>(),
+         ComponentDescriptor<ImageComponentStyle3, ImageComponent3>(),
+         ComponentDescriptor<LabelComponentStyle1, LabelComponent1>(),
+         ComponentDescriptor<LabelComponentStyle2, LabelComponent2>(),
+         ComponentDescriptor<LabelComponentStyle3, LabelComponent3>(),
+         ComponentDescriptor<ButtonComponentStyle1, ButtonComponent1>(),
+         ComponentDescriptor<ButtonComponentStyle2, ButtonComponent2>(),
+         ComponentDescriptor<ButtonComponentStyle2, ButtonComponent3>(),
+         ComponentDescriptor<ImageLabelComponentStyle1, ImageLabelComponent1>(),
+         ComponentDescriptor<ImageLabelComponentStyle2, ImageLabelComponent2>(),
+         ComponentDescriptor<ImageLabelComponentStyle3, ImageLabelComponent3>(),
+         ComponentDescriptor<ImageLabelLabelButtonComponentStyle1, ImageLabelLabelButtonComponent1>(),
+         ComponentDescriptor<ImageLabelLabelButtonComponentStyle2, ImageLabelLabelButtonComponent2>(),
+         ComponentDescriptor<ImageLabelLabelButtonComponentStyle3, ImageLabelLabelButtonComponent3>(),
+         ComponentDescriptor<ImageLabelLabelButtonComponentStyle4, ImageLabelLabelButtonComponent4>(),
+      ])
+   }
+}
 
 ```
 
