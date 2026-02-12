@@ -363,7 +363,7 @@ class ImageLabelComponent: Component<ImageLabelComponentStyle> {
     override func configure(_ s: ImageLabelComponentStyle) -> Self {
         v1.configure(s.s1)
         v2.configure(s.s2)
-        return self
+        return super.configure(s)
     }
 }
 
@@ -396,7 +396,7 @@ class ImageLabelLabelComponent: Component<ImageLabelLabelComponentStyle> {
         v1.configure(s.s1)
         v2.configure(s.s2)
         v3.configure(s.s3)
-        return self
+        return super.configure(s)
     }
 }
 
@@ -432,7 +432,7 @@ class ImageLabelLabelButtonComponent: Component<ImageLabelLabelButtonComponentSt
         v2.configure(s.s2)
         v3.configure(s.s3)
         v4.configure(s.s4)
-        return self
+        return super.configure(s)
     }
 }
 
@@ -468,15 +468,9 @@ open class ImageLabelLabelButtonComponentStyle4: ImageLabelLabelButtonComponentS
 
 ```swift
 
-public class ViewController<Style:ViewStyle>: UITableViewController, Configurable {
+public class View<Style:ViewStyle>: ViewController, Configurable {
 
     lazy var dataSource = DataSource.shared
-
-    override func viewDidload () {
-      super.viewDidload()
-      dataSource.delegate = tableView
-      dataSource.dataSource = tableView
-    }
 
     @discardableResult
     public func configure (state: ViewState<Style>) -> Self {
@@ -497,24 +491,25 @@ public class ViewController<Style:ViewStyle>: UITableViewController, Configurabl
 }
 
 extension DataSource {
+   // register all your components here with via key-value (model-view) principle just one time...
    static var shared: DataSource {
      .init(components: [
-         ComponentDescriptor<ImageComponentStyle1, ImageComponent1>(),
-         ComponentDescriptor<ImageComponentStyle2, ImageComponent2>(),
-         ComponentDescriptor<ImageComponentStyle3, ImageComponent3>(),
-         ComponentDescriptor<LabelComponentStyle1, LabelComponent1>(),
-         ComponentDescriptor<LabelComponentStyle2, LabelComponent2>(),
-         ComponentDescriptor<LabelComponentStyle3, LabelComponent3>(),
-         ComponentDescriptor<ButtonComponentStyle1, ButtonComponent1>(),
-         ComponentDescriptor<ButtonComponentStyle2, ButtonComponent2>(),
-         ComponentDescriptor<ButtonComponentStyle2, ButtonComponent3>(),
-         ComponentDescriptor<ImageLabelComponentStyle1, ImageLabelComponent1>(),
-         ComponentDescriptor<ImageLabelComponentStyle2, ImageLabelComponent2>(),
-         ComponentDescriptor<ImageLabelComponentStyle3, ImageLabelComponent3>(),
-         ComponentDescriptor<ImageLabelLabelButtonComponentStyle1, ImageLabelLabelButtonComponent1>(),
-         ComponentDescriptor<ImageLabelLabelButtonComponentStyle2, ImageLabelLabelButtonComponent2>(),
-         ComponentDescriptor<ImageLabelLabelButtonComponentStyle3, ImageLabelLabelButtonComponent3>(),
-         ComponentDescriptor<ImageLabelLabelButtonComponentStyle4, ImageLabelLabelButtonComponent4>(),
+         Descriptor<ImageComponentStyle1, ImageComponent1>(),
+         Descriptor<ImageComponentStyle2, ImageComponent2>(),
+         Descriptor<ImageComponentStyle3, ImageComponent3>(),
+         Descriptor<LabelComponentStyle1, LabelComponent1>(),
+         Descriptor<LabelComponentStyle2, LabelComponent2>(),
+         Descriptor<LabelComponentStyle3, LabelComponent3>(),
+         Descriptor<ButtonComponentStyle1, ButtonComponent1>(),
+         Descriptor<ButtonComponentStyle2, ButtonComponent2>(),
+         Descriptor<ButtonComponentStyle2, ButtonComponent3>(),
+         Descriptor<ImageLabelComponentStyle1, ImageLabelComponent1>(),
+         Descriptor<ImageLabelComponentStyle2, ImageLabelComponent2>(),
+         Descriptor<ImageLabelComponentStyle3, ImageLabelComponent3>(),
+         Descriptor<ImageButtonComponentStyle1, ImageButtonComponent1>(),
+         Descriptor<ImageButtonComponentStyle2, ImageButtonComponent2>(),
+         Descriptor<ImageButtonComponentStyle3, ImageButtonComponent3>(),
+         Descriptor<ImageButtonComponentStyle4, ImageButtonComponent4>(),
       ])
    }
 }
