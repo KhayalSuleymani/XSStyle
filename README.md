@@ -323,7 +323,7 @@ examples should be...
 Lets show, how component inheritance works in real example.
 
 
-// -------------- first inheritance
+// first inheritance
 
 ```swift
 
@@ -350,7 +350,7 @@ open class ImageComponentStyle: ComponentStyle {
 
 ```
 
-// -------------- second inheritance
+// second inheritance
 
 ```swift
 
@@ -381,7 +381,7 @@ open class ImageLabelComponentStyle: ImageComponentStyle {
 
 ```
 
-// -------------- third inheritance
+// third inheritance
 
 ```swift
 
@@ -415,7 +415,7 @@ open class ImageLabelLabelComponentStyle: ImageLabelComponentStyle {
 
 ```
 
-// -------------- fourth inheritance
+// fourth inheritance
 
 ```swift
 
@@ -453,7 +453,7 @@ open class ImageLabelLabelButtonComponentStyle: ImageLabelLabelComponentStyle {
 
 ```
 
-// -------------- let's suppose we have ImageLabelLabelButtonComponent but different styles, your style model inheritance shoud be like |
+// let's suppose we have ImageLabelLabelButtonComponent but different styles, your style model inheritance shoud be like |
 
 ```swift
 
