@@ -80,10 +80,10 @@ public class Wallet: Coordinator<AppRoute> {                            // -----
     @discardableResult                                                  //                |
     override public func move(by route: AppRoute) -> Self {             //                |         
         switch route {                                                  //                |
-        case .authorize(let r):                                         //                |
-            let c = Authorize(r)                                        // C --------     |
+        case .authorize(let route):                                     //                |
+            let c = Authorize(route)                                    // C --------     |
             show(v: c)                                                  //            |   |
-        case .dashboard(_):                                             //            |
+        case .dashboard(let route):                                     //            |
             let c = Tab(tabs: [                                         //            |-- C
                 Tab1(),                                                 //            |
                 Tab2(),                                                 //            |   |
@@ -116,7 +116,7 @@ Lets deep dive into the **Products** app coordinator to see what is inside, all 
 ```swift
 
 
-// MARK: Products app Coordinator
+// MARK: Products app Coordinator contains too many coordinators..
 
 public class Products: Coordinator<ProductsRoute> {                     // ---------------
     @discardableResult                                                  //                |
