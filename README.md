@@ -304,7 +304,7 @@ class ViewModel1: ViewModel<Model1> {
 
 **nice :)** 
 
-
+### Components architecture
 
 Style models **Inheritance** hierarchies. let's suppose 
 
