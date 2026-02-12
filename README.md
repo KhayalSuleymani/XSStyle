@@ -320,4 +320,34 @@ examples should be...
 
 ![alt text](https://github.com/KhayalSuleymani/XSStyle/blob/master/Documents/Components/components_hierarchy.png)
 
+Lets show, how component inheritance works in real example.
+
+
+```swift
+
+class ImageComponent: Component<ImageComponentStyle> {
+
+    weak var v1: ImageView!
+    
+    @discardableResult
+    override func configure(_ s: ImageComponentStyle) -> Self {
+        v1.configure(s.s1)
+        return super.configure(s)                                     // -------------- inheritance first floor 
+    }
+}
+
+open class ImageComponentStyle: ComponentStyle {
+    
+    let s1: ImageStyle
+    
+    public init(s1: ImageStyle) {
+        self.s1 = s1
+    }
+}
+
+
+
+
+
+```
 
