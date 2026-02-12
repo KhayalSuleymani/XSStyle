@@ -307,3 +307,6 @@ class ViewModel1: ViewModel<Model1> {
 Style models **Inheritance** hierarchies.
 
 
+![alt text]([https://github.com/KhayalSuleymani/XSStyle/blob/master/Documents/UnitTests/unit_tests_coverage.png](https://github.com/KhayalSuleymani/XSStyle/blob/master/Documents/Components/components_hierarchy.png))
+
+
