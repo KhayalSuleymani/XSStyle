@@ -337,7 +337,7 @@ class ImageComponent: Component<ImageComponentStyle> {
     @discardableResult
     override func configure(_ s: ImageComponentStyle) -> Self {
         v1.configure(s.s1)
-        return super.configure(s)                                     
+        super.configure(s)                                     
     }
 }
 
@@ -350,7 +350,7 @@ class ImageLabelComponent: Component<ImageLabelComponentStyle> {
     override func configure(_ s: ImageLabelComponentStyle) -> Self {
         v1.configure(s.s1)
         v2.configure(s.s2)
-        return super.configure(s)
+        super.configure(s)
     }
 }
 
@@ -365,7 +365,7 @@ class ImageLabelLabelComponent: Component<ImageLabelLabelComponentStyle> {
         v1.configure(s.s1)
         v2.configure(s.s2)
         v3.configure(s.s3)
-        return super.configure(s)
+        super.configure(s)
     }
 }
 
@@ -382,10 +382,9 @@ class ImageLabelLabelButtonComponent: Component<ImageLabelLabelComponentStyle> {
         v2.configure(s.s2)
         v3.configure(s.s3)
         v4.configure(s.s4)
-        return super.configure(s)
+        super.configure(s)
     }
 }
-
 
 ```
 
