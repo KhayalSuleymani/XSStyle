@@ -96,7 +96,7 @@ public class Wallet: Coordinator<AppRoute> {                            // -----
     }                                                                   //                |
 }                                                                       // ---------------
 
-// MARK: UNIT TESTS
+// MARK: MODULE UNIT TESTS
 final class WalletTests: TestCase {    
     func test () {
         let c = Wallet()
@@ -139,15 +139,19 @@ public class Products: Coordinator<ProductsRoute> {                     // -----
     }                                                                   //                |
 }                                                                       // ---------------
 
-let app = Products()
-app.move(to: .cards(.view1(data)))         // will open cards module first view.
-app.move(to: .accounts(.view2(data)))      // will open accounts module second view.
-app.move(to: .deposits(.view3(data)))      // will open deposits module third view.
-app.move(to: .loans(.view3(data)))         // will open loans module third view.
+// MARK: MODULE UNIT TESTS
+final class ProductsTests: TestCase {    
+    func test () {
+        let c = Products()
+        c
+            app.move(to: .cards(.view1(data)))         // will open cards module first view.
+            app.move(to: .accounts(.view2(data)))      // will open accounts module second view.
+            app.move(to: .deposits(.view3(data)))      // will open deposits module third view.
+            app.move(to: .loans(.view3(data)))         // will open loans module third view.
+}
 
 
 ```
-
 
 
 Lets deep dive to the **Authorize & Payments** apps coordinator to see what is inside, all micro apps working with clean MVVM-C pattern.
