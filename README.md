@@ -190,6 +190,18 @@ public class Cards: Coordinator<CardsRoute> {                           // -----
     }                                                                   //                |
 }                                                                       // ---------------
 
+// MARK: CARDS MODULE UNIT TESTS
+final class CardsTests: TestCase {    
+    func test () {
+        let c = Cards()
+        c
+            app.move(to: .view1(data))     
+            app.move(to: .view2(data))
+            app.move(to: .view3(data)) 
+}
+
+
+
 // MARK: Accounts (Model View ViewModel Coordinator) - MVVM-C
 
 public class Accounts: Coordinator<AccountsRoute> {                     // ---------------
@@ -222,12 +234,15 @@ public class Accounts: Coordinator<AccountsRoute> {                     // -----
     }                                                                   //                |
 }                                                                       // ---------------
 
-
-let app = Cards()                 let app = Accounts()
-app.move(to: .view1(data))        app.move(to: .view1(data))
-app.move(to: .view2(data))        app.move(to: .view2(data))
-app.move(to: .view3(data))        app.move(to: .view3(data)) 
-
+// MARK: ACCOUNTS MODULE UNIT TESTS
+final class AccountsTests: TestCase {    
+    func test () {
+        let c = Accounts()
+        c
+            app.move(to: .view1(data))     
+            app.move(to: .view2(data))
+            app.move(to: .view3(data)) 
+}
 
 ```
 
