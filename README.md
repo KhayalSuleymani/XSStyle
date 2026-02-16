@@ -98,7 +98,7 @@ public class Wallet: Coordinator<AppRoute> {                            // -----
 
 // MARK: MODULE UNIT TESTS
 final class WalletTests: TestCase {    
-    func test () {
+    override func test () {
         let c = Wallet()
         c
             .move(by: .authorize(.view1(.mock)))                          // will open authorize module first view.
@@ -141,7 +141,7 @@ public class Products: Coordinator<ProductsRoute> {                     // -----
 
 // MARK: MODULE UNIT TESTS
 final class ProductsTests: TestCase {    
-    func test () {
+    override func test () {
         let c = Products()
         c
             app.move(to: .cards(.view1(data)))         // will open cards module first view.
@@ -192,7 +192,7 @@ public class Cards: Coordinator<CardsRoute> {                           // -----
 
 // MARK: CARDS MODULE UNIT TESTS
 final class CardsTests: TestCase {    
-    func test () {
+    override func test () {
         let c = Cards()
         c
             app.move(to: .view1(data))     
@@ -236,7 +236,7 @@ public class Accounts: Coordinator<AccountsRoute> {                     // -----
 
 // MARK: ACCOUNTS MODULE UNIT TESTS
 final class AccountsTests: TestCase {    
-    func test () {
+    override func test () {
         let c = Accounts()
         c
             app.move(to: .view1(data))     
