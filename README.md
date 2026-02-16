@@ -96,18 +96,18 @@ public class Wallet: Coordinator<AppRoute> {                            // -----
     }                                                                   //                |
 }                                                                       // ---------------
 
-let app = Wallet()
-
-app.move(to: .authorize(.view1(data)))         // will open authorize module first view.
-app.move(to: .authorize(.view2(data)))         // will open authorize module second view.
-app.move(to: .authorize(.view3(data)))         // will open authorize module third view.
-
-app.move(to: .dashboard(.tab1(.mod1(data))))   // will open the first module under first tab.
-app.move(to: .dashboard(.tab2(.mod1(data))))   // will open the first module under second tab.
-app.move(to: .dashboard(.tab3(.mod2(data))))   // will open the second module under third tab.
-app.move(to: .dashboard(.tab4(.mod3(data))))   // will open the third module under fourth tab.
-
-
+// MARK: UNIT TESTS
+final class WalletTests: TestCase {    
+    func test () {
+        let c = Wallet()
+        c
+            .move(by: .authorize(.view1(.mock)))                          // will open authorize module first view.
+            .move(by: .dashboard(.tab1(.products(.mock))))                // will open the products module under tab1.
+            .move(by: .dashboard(.tab2(.operations(.mock))))              // will open the operations module under tab2.
+            .move(by: .dashboard(.tab3(.payments(.view1(.mock)))))        // will open the payments module under tab3.
+            .move(by: .dashboard(.tab4(.products(.mock))))                // will open the products module under tab4.
+    }
+}
 
 ```
 
