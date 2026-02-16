@@ -388,7 +388,7 @@ class ImageLabelLabelComponent: Component<ImageLabelLabelComponentStyle> {
     }
 }
 
-class ImageLabelLabelButtonComponent: Component<ImageLabelLabelComponentStyle> {
+class ImageLabelLabelButtonComponent: Component<ImageLabelLabelButtonComponentStyle> {
 
     weak var v1: ImageView!
     weak var v2: Label!
@@ -396,7 +396,7 @@ class ImageLabelLabelButtonComponent: Component<ImageLabelLabelComponentStyle> {
     weak var v4: Button!
 
     @discardableResult
-    override func configure(_ s: ImageLabelLabelButtonComponent) -> Self {
+    override func configure(_ s: ImageLabelLabelButtonComponentStyle) -> Self {
         v1.configure(s.s1)
         v2.configure(s.s2)
         v3.configure(s.s3)
