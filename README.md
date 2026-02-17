@@ -488,7 +488,7 @@ open class ImageLabelLabelButtonComponentStyle4: ImageLabelLabelButtonComponentS
 
 ```swift
 
-public class View<Style:ViewStyle>: ViewController, Configurable {
+public class View<Style:ViewStyle>: XSViewController, Configurable {
 
     lazy var dataSource = DataSource.shared
 
@@ -496,11 +496,16 @@ public class View<Style:ViewStyle>: ViewController, Configurable {
     public func configure (state: ViewState<Style>) -> Self {
        switch state {
          case .loaded (let style):
-              dataSource
-               .set(tableView)
-               .set(style.sectionsStyle)
-          navigationController?.configure(style.navigationStyle)
-          indicator.loaded()
+             navigation.configure(style.navigationStyle)
+             indicator.loaded()
+             switch style.type {
+               case .list: dataSource
+                  .set(tableView)
+                  .set(style.sectionsStyle)
+                case .grid: dataSource
+                  .set(collectionView)
+                  .set(style.sectionsStyle)
+               }
          case .loading (let style):
             indicator.loading()
             configure(state: .loaded(style))
