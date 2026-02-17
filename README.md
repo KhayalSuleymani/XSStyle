@@ -255,7 +255,7 @@ final class AccountsTests: TestCase {
 
 // MARK: **Model** (m)
 
-class Model1: ViewStyle<Transaction> {
+class Model1: XSViewStyle<Transaction> {
         
     override var sectionsStyle: [SectionStyle] {
         
@@ -358,7 +358,7 @@ Lets show, how component inheritance works in real example.
 
 ```swift
 
-class ImageComponent: Component<ImageComponentStyle> {
+class ImageComponent: XSComponent<ImageComponentStyle> {
 
     weak var v1: ImageView!
     
@@ -369,7 +369,7 @@ class ImageComponent: Component<ImageComponentStyle> {
     }
 }
 
-class ImageLabelComponent: Component<ImageLabelComponentStyle> {
+class ImageLabelComponent: XSComponent<ImageLabelComponentStyle> {
     
     weak var v1: ImageView!
     weak var v2: Label!
@@ -382,7 +382,7 @@ class ImageLabelComponent: Component<ImageLabelComponentStyle> {
     }
 }
 
-class ImageLabelLabelComponent: Component<ImageLabelLabelComponentStyle> {
+class ImageLabelLabelComponent: XSComponent<ImageLabelLabelComponentStyle> {
 
     weak var v1: ImageView!
     weak var v2: Label!
@@ -397,7 +397,7 @@ class ImageLabelLabelComponent: Component<ImageLabelLabelComponentStyle> {
     }
 }
 
-class ImageLabelLabelButtonComponent: Component<ImageLabelLabelButtonComponentStyle> {
+class ImageLabelLabelButtonComponent: XSComponent<ImageLabelLabelButtonComponentStyle> {
 
     weak var v1: ImageView!
     weak var v2: Label!
@@ -420,7 +420,7 @@ class ImageLabelLabelButtonComponent: Component<ImageLabelLabelButtonComponentSt
 
 ```swift
 
-open class ImageComponentStyle: ComponentStyle {
+open class ImageComponentStyle: XSComponentStyle {
     
     let s1: ImageStyle
     
