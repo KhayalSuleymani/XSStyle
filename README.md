@@ -496,8 +496,6 @@ public class View<Style:ViewStyle>: XSViewController, Configurable {
     public func configure (state: ViewState<Style>) -> Self {
        switch state {
          case .loaded (let style):
-             navigation.configure(style.navigationStyle)
-             indicator.loaded()
              switch style.type {
                case .list: dataSource
                   .set(tableView)
@@ -506,6 +504,9 @@ public class View<Style:ViewStyle>: XSViewController, Configurable {
                   .set(collectionView)
                   .set(style.sectionsStyle)
                }
+             navigation.configure(style.navigationStyle)
+             toolBar.configure(style.toolBarStyle)
+             indicator.loaded()
          case .loading (let style):
             indicator.loading()
             configure(state: .loaded(style))
