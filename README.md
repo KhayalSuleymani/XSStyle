@@ -319,7 +319,9 @@ class ViewModel1: ViewModel<Model1> {
 
 **App Code Coverage written via XSStyle** 
 
-![alt text](https://github.com/KhayalSuleymani/XSStyle/blob/master/Documents/UnitTests/unit_tests_coverage.png)
+![alt text](https://github.com/KhayalSuleymani/XSStyle/blob/master/Documents/UnitTests/app_layer_unit_tests_coverage.png)
+![alt text](https://github.com/KhayalSuleymani/XSStyle/blob/master/Documents/UnitTests/m_layer_unit_tests_coverage.png)
+![alt text](https://github.com/KhayalSuleymani/XSStyle/blob/master/Documents/UnitTests/vm_layer_unit_tests_coverage.png)
 
 **nice :)** 
 
