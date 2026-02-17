@@ -486,10 +486,11 @@ public class View<Style:ViewStyle>: ViewController, Configurable {
     @discardableResult
     public func configure (state: ViewState<Style>) -> Self {
        switch state {
-         case .loaded (let style): 
-          dataSource
+         case .loaded (let style):
+              dataSource
                .set(tableView)
                .set(style.sectionsStyle)
+          navigationController?.configure(style.navigationStyle)
           indicator.loaded()
          case .loading (let style):
             indicator.loading()
