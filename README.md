@@ -306,10 +306,29 @@ typealias View1 = View<Model1> // no need viewcontroller anymore
 class ViewModel1: ViewModel<Model1> {
     @discardableResult
     override func move(by c: Coordinator<Route>) -> Self {
+        // will trigger view configure function with loading state... 
+        $0.configure(state: .loading(data)) 
         NetworkService.shared
             .requestTransaction(model?.id) {
-                $0.configure(.init($1))
+                // will trigger view configure function with loaded state... 
+                $0.configure(state: .loaded(.init($1)))
         })
+        return self
+    }
+}
+
+// MARK: **View Model** (vm)
+class ViewModel2: ViewModel<Model2> {
+    @discardableResult
+    override func move(by c: Coordinator<Route>) -> Self {
+        // you can call all view events from here...
+        onViewDidload { _ in
+        // your code here...
+        }.onViewWillAppear { _ in
+        // your code here...
+        }.onViewDidAppear { _ in
+         // your code here...
+        }
         return self
     }
 }
