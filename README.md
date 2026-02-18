@@ -253,7 +253,7 @@ final class AccountsTests: TestCase {
 ```swift
 
 
-// MARK: **Model** (m)
+// MARK: **Model** (m) event source...
 
 class Model1: XSViewStyle<Transaction> {
         
@@ -298,11 +298,12 @@ class Model1: XSViewStyle<Transaction> {
 }
 
 
-// MARK: **View** (v)
+// MARK: **View** (v) event source...
 typealias View1 = View<Model1> // no need viewcontroller anymore
 
+// EVENT SOURCE
 
-// MARK: **View Model** (vm)
+// MARK: **View Model** (vm) event listener...
 class ViewModel1: ViewModel<Model1> {
     @discardableResult
     override func move(by c: Coordinator<Route>) -> Self {
@@ -317,7 +318,7 @@ class ViewModel1: ViewModel<Model1> {
     }
 }
 
-// MARK: **View Model** (vm)
+// MARK: **View Model** (vm) event listener...
 class ViewModel2: ViewModel<Model2> {
     @discardableResult
     override func move(by c: Coordinator<Route>) -> Self {
@@ -333,17 +334,17 @@ class ViewModel2: ViewModel<Model2> {
     }
 }
 
-// MARK: **View Model** (vm)
+// MARK: **View Model** (vm) event listener...
 class ViewModel3: ViewModel<Model3> {
     @discardableResult
     override func move(by c: Coordinator<Route>) -> Self {
-        // you can call all view events from here...
+        // you can call all from here events from here...
         onSelect { event in
          switch event {
            case .button(let button):
-            c.move(by: Route(button.id)) 
+            c.move(by: Route(button.id)) // trigger coordinator...
            case .route(let route):
-            c.move(by: route)) 
+            c.move(by: route))           // trigger coordinator...
           }
         }
         return self
