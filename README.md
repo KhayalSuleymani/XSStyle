@@ -322,7 +322,7 @@ class ViewModel1: ViewModel<Model1> {
 class ViewModel2: ViewModel<Model2> {
     @discardableResult
     override func move(by c: Coordinator<Route>) -> Self {
-        // you can call all view events from here...
+        // listen all view events from here...
         onViewDidload { _ in
         // your code here...
         }.onViewWillAppear { _ in
@@ -338,7 +338,7 @@ class ViewModel2: ViewModel<Model2> {
 class ViewModel3: ViewModel<Model3> {
     @discardableResult
     override func move(by c: Coordinator<Route>) -> Self {
-        // you can call all from here events from here...
+        // listen all model events from here...
         onSelect { event in
          switch event {
            case .button(let button):
