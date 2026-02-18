@@ -266,7 +266,7 @@ class Model1: XSViewStyle<Transaction> {
         let s1_c1 = ImageLabelButtonComponentStyle(
             s1: .style(.s1(data?.amount)),
             s2: .style(.s2("Hello")),
-            s3: .style(.s3(.s1("https://"), event: event(_:))))
+            s3: .style(.s3(.s1("https://"), select: select(_:)))) // will trigger onSelect event in the viewmodel
             .didSelect { _ in
                 self.move(by: .view(data))
             }.willMove { _ in
@@ -328,6 +328,23 @@ class ViewModel2: ViewModel<Model2> {
         // your code here...
         }.onViewDidAppear { _ in
          // your code here...
+        }
+        return self
+    }
+}
+
+// MARK: **View Model** (vm)
+class ViewModel3: ViewModel<Model3> {
+    @discardableResult
+    override func move(by c: Coordinator<Route>) -> Self {
+        // you can call all view events from here...
+        onSelect { event in
+         switch event {
+           case .button(let button):
+            c.move(by: Route(button.id)) 
+           case .route(let route):
+            c.move(by: route)) 
+          }
         }
         return self
     }
